@@ -1,0 +1,61 @@
+{
+  "build": {
+    "model_name": "olympus-coder-v1",
+    "modelfile_path": "./modelfile/Modelfile",
+    "base_models": {
+      "primary": "codellama:13b",
+      "fallback": "llama3:8b"
+    },
+    "validation": {
+      "enabled": true,
+      "skip_on_failure": false,
+      "timeout_seconds": 60
+    },
+    "health_check": {
+      "enabled": true,
+      "include_performance": false,
+      "timeout_seconds": 120
+    },
+    "deployment_verification": {
+      "enabled": true,
+      "required_success_rate": 0.85
+    }
+  },
+  "ollama": {
+    "host": "localhost",
+    "port": 11434,
+    "api_timeout": 30,
+    "pull_timeout": 300
+  },
+  "logging": {
+    "enabled": true,
+    "log_directory": "./logs",
+    "log_level": "INFO",
+    "retain_logs": 10
+  },
+  "performance": {
+    "response_time_threshold": 10.0,
+    "memory_limit_mb": 8192,
+    "concurrent_requests": 1
+  },
+  "validation_tests": {
+    "basic_response": {
+      "enabled": true,
+      "timeout": 30
+    },
+    "code_generation": {
+      "enabled": true,
+      "timeout": 45,
+      "languages": ["python", "javascript"]
+    },
+    "json_output": {
+      "enabled": true,
+      "timeout": 30,
+      "required_fields": ["tool_name", "parameters"]
+    },
+    "context_awareness": {
+      "enabled": true,
+      "timeout": 60
+    }
+  }
+}

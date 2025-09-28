@@ -1,0 +1,149 @@
+{
+  "model_configurations": {
+    "default": {
+      "description": "Optimized configuration for general coding tasks with high accuracy",
+      "base_model": "codellama:13b",
+      "parameters": {
+        "temperature": 0.1,
+        "top_p": 0.9,
+        "top_k": 40,
+        "repeat_penalty": 1.1,
+        "num_ctx": 4096,
+        "num_predict": 2048
+      },
+      "stop_sequences": [
+        "```\n\n",
+        "}\n\n",
+        "Human:",
+        "Assistant:"
+      ],
+      "use_case": "Primary configuration for autonomous coding tasks requiring high precision"
+    },
+    "creative": {
+      "description": "Higher creativity for complex problem-solving and architectural decisions",
+      "base_model": "codellama:13b",
+      "parameters": {
+        "temperature": 0.3,
+        "top_p": 0.95,
+        "top_k": 50,
+        "repeat_penalty": 1.05,
+        "num_ctx": 4096,
+        "num_predict": 2048
+      },
+      "stop_sequences": [
+        "```\n\n",
+        "}\n\n",
+        "Human:",
+        "Assistant:"
+      ],
+      "use_case": "For complex architectural decisions and creative problem-solving"
+    },
+    "precise": {
+      "description": "Maximum precision for critical code generation and debugging",
+      "base_model": "codellama:13b",
+      "parameters": {
+        "temperature": 0.05,
+        "top_p": 0.8,
+        "top_k": 20,
+        "repeat_penalty": 1.15,
+        "num_ctx": 4096,
+        "num_predict": 2048
+      },
+      "stop_sequences": [
+        "```\n\n",
+        "}\n\n",
+        "Human:",
+        "Assistant:"
+      ],
+      "use_case": "For debugging, error correction, and critical system components"
+    },
+    "lightweight": {
+      "description": "Faster inference with llama3:8b for simpler tasks",
+      "base_model": "llama3:8b",
+      "parameters": {
+        "temperature": 0.1,
+        "top_p": 0.9,
+        "top_k": 40,
+        "repeat_penalty": 1.1,
+        "num_ctx": 2048,
+        "num_predict": 1024
+      },
+      "stop_sequences": [
+        "```\n\n",
+        "}\n\n",
+        "Human:",
+        "Assistant:"
+      ],
+      "use_case": "For simple coding tasks where speed is prioritized over complexity"
+    }
+  },
+  "parameter_explanations": {
+    "temperature": {
+      "description": "Controls randomness in output generation",
+      "range": "0.0 - 1.0",
+      "optimization": "Lower values (0.05-0.1) for precise code generation, higher (0.3) for creative solutions"
+    },
+    "top_p": {
+      "description": "Nucleus sampling - considers tokens with cumulative probability up to p",
+      "range": "0.0 - 1.0",
+      "optimization": "0.8-0.9 for focused responses, 0.95 for more diverse outputs"
+    },
+    "top_k": {
+      "description": "Limits vocabulary to top k most likely tokens",
+      "range": "1 - 100+",
+      "optimization": "20-40 for precise code, 50+ for creative problem-solving"
+    },
+    "repeat_penalty": {
+      "description": "Penalizes repetition in generated text",
+      "range": "1.0 - 1.3",
+      "optimization": "1.1-1.15 optimal for code to avoid repetitive patterns"
+    },
+    "num_ctx": {
+      "description": "Context window size in tokens",
+      "range": "512 - 8192+",
+      "optimization": "4096 provides good balance for most coding tasks"
+    },
+    "num_predict": {
+      "description": "Maximum tokens to generate in response",
+      "range": "256 - 4096+",
+      "optimization": "2048 allows for substantial code blocks and explanations"
+    }
+  },
+  "stop_sequence_optimization": {
+    "code_blocks": {
+      "sequence": "```\n\n",
+      "purpose": "Prevents model from continuing after code block completion"
+    },
+    "json_objects": {
+      "sequence": "}\n\n",
+      "purpose": "Ensures clean JSON tool request formatting"
+    },
+    "conversation_boundaries": {
+      "sequences": ["Human:", "Assistant:"],
+      "purpose": "Prevents model from simulating conversation turns"
+    }
+  },
+  "context_window_optimization": {
+    "token_allocation": {
+      "system_prompt": "~1500 tokens",
+      "user_context": "~2000 tokens",
+      "response_generation": "~500 tokens"
+    },
+    "context_management": {
+      "priority_order": [
+        "Current task requirements",
+        "Relevant file contents",
+        "Project structure information",
+        "Error context and tracebacks",
+        "Historical conversation context"
+      ]
+    }
+  },
+  "performance_targets": {
+    "structured_response_accuracy": ">95%",
+    "code_syntax_correctness": ">98%",
+    "autonomous_task_completion": ">75%",
+    "response_time": "<5 seconds for typical requests",
+    "context_retention": "Maintain context across 10+ turn conversations"
+  }
+}

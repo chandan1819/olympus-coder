@@ -1,0 +1,32 @@
+{
+  "deployment": {
+    "environment": "development",
+    "ollama_host": "localhost",
+    "ollama_port": 11434,
+    "model_endpoint": "/api/generate",
+    "health_check_endpoint": "/api/tags"
+  },
+  "monitoring": {
+    "enable_logging": true,
+    "log_level": "INFO",
+    "metrics_collection": true,
+    "performance_tracking": true
+  },
+  "integration": {
+    "api_timeout": 30,
+    "max_retries": 3,
+    "retry_delay": 1,
+    "concurrent_requests": 5
+  },
+  "validation": {
+    "enable_response_validation": true,
+    "enable_code_syntax_check": true,
+    "enable_json_schema_validation": true,
+    "confidence_threshold": 0.7
+  },
+  "fallback": {
+    "enable_fallback": true,
+    "fallback_model": "llama3:8b",
+    "escalation_threshold": 3
+  }
+}
