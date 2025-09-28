@@ -1,0 +1,83 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Olympus Coder: Generate Code",
+            "type": "shell",
+            "command": "curl",
+            "args": [
+                "-X", "POST",
+                "http://localhost:11434/api/generate",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"model\":\"olympus-coder-v1:latest\",\"prompt\":\"${input:codePrompt}\",\"stream\":false}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Olympus Coder: Debug Current File",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "${workspaceFolder}/ide-integrations/vscode/scripts/debug_file.py",
+                "${file}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Olympus Coder: Validate Model",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "${workspaceFolder}/scripts/validate.py",
+                "--model", "olympus-coder-v1:latest",
+                "--quick"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Olympus Coder: Health Check",
+            "type": "shell",
+            "command": "curl",
+            "args": [
+                "http://localhost:11434/api/tags"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "codePrompt",
+            "description": "What code would you like to generate?",
+            "default": "Create a Python function to validate email addresses",
+            "type": "promptString"
+        }
+    ]
+}

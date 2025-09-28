@@ -1,0 +1,114 @@
+### Olympus-Coder REST Client Requests for VS Code
+### Install REST Client extension: ext install humao.rest-client
+
+@ollamaUrl = http://localhost:11434
+@modelName = olympus-coder-v1:latest
+
+### 1. Generate Python Function
+POST {{ollamaUrl}}/api/generate
+Content-Type: application/json
+
+{
+  "model": "{{modelName}}",
+  "prompt": "Create a Python function that validates email addresses using regex. Include proper error handling and docstring.",
+  "stream": false,
+  "options": {
+    "temperature": 0.1,
+    "num_predict": 1024
+  }
+}
+
+### 2. Debug JavaScript Code
+POST {{ollamaUrl}}/api/generate
+Content-Type: application/json
+
+{
+  "model": "{{modelName}}",
+  "prompt": "Debug this JavaScript code and fix any issues:\n\nfunction calculateTotal(items) {\n  let total = 0;\n  for (let i = 0; i <= items.length; i++) {\n    total += items[i].price;\n  }\n  return total;\n}",
+  "stream": false,
+  "options": {
+    "temperature": 0.05,
+    "num_predict": 1024
+  }
+}
+
+### 3. Explain Complex Algorithm
+POST {{ollamaUrl}}/api/generate
+Content-Type: application/json
+
+{
+  "model": "{{modelName}}",
+  "prompt": "Explain this Python algorithm step by step:\n\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quicksort(left) + middle + quicksort(right)",
+  "stream": false,
+  "options": {
+    "temperature": 0.2,
+    "num_predict": 1024
+  }
+}
+
+### 4. Generate Unit Tests
+POST {{ollamaUrl}}/api/generate
+Content-Type: application/json
+
+{
+  "model": "{{modelName}}",
+  "prompt": "Generate comprehensive unit tests for this Python class:\n\nclass Calculator:\n    def add(self, a, b):\n        return a + b\n    \n    def divide(self, a, b):\n        if b == 0:\n            raise ValueError('Cannot divide by zero')\n        return a / b",
+  "stream": false,
+  "options": {
+    "temperature": 0.1,
+    "num_predict": 1024
+  }
+}
+
+### 5. Code Review and Optimization
+POST {{ollamaUrl}}/api/generate
+Content-Type: application/json
+
+{
+  "model": "{{modelName}}",
+  "prompt": "Review this code for performance issues and suggest optimizations:\n\ndef find_duplicates(lst):\n    duplicates = []\n    for i in range(len(lst)):\n        for j in range(i + 1, len(lst)):\n            if lst[i] == lst[j] and lst[i] not in duplicates:\n                duplicates.append(lst[i])\n    return duplicates",
+  "stream": false,
+  "options": {
+    "temperature": 0.1,
+    "num_predict": 1024
+  }
+}
+
+### 6. Generate API Endpoint
+POST {{ollamaUrl}}/api/generate
+Content-Type: application/json
+
+{
+  "model": "{{modelName}}",
+  "prompt": "Create a Flask API endpoint for user authentication with JWT tokens. Include proper error handling and validation.",
+  "stream": false,
+  "options": {
+    "temperature": 0.1,
+    "num_predict": 2048
+  }
+}
+
+### 7. Refactor Legacy Code
+POST {{ollamaUrl}}/api/generate
+Content-Type: application/json
+
+{
+  "model": "{{modelName}}",
+  "prompt": "Refactor this legacy JavaScript code to use modern ES6+ features:\n\nfunction processUsers(users) {\n  var result = [];\n  for (var i = 0; i < users.length; i++) {\n    if (users[i].active == true) {\n      var user = {\n        id: users[i].id,\n        name: users[i].firstName + ' ' + users[i].lastName,\n        email: users[i].email\n      };\n      result.push(user);\n    }\n  }\n  return result;\n}",
+  "stream": false,
+  "options": {
+    "temperature": 0.1,
+    "num_predict": 1024
+  }
+}
+
+### 8. Health Check
+GET {{ollamaUrl}}/api/tags
+
+### 9. Model Information
+POST {{ollamaUrl}}/api/show
+Content-Type: application/json
+
+{
+  "name": "{{modelName}}"
+}
