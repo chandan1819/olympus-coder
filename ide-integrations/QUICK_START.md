@@ -2,7 +2,19 @@
 
 Get Olympus-Coder working in your favorite IDE in under 5 minutes!
 
-## ⚡ Universal Method (Works with ANY IDE)
+## 🎉 **NEW: Super Easy Installation (30 seconds)**
+
+```bash
+# Install Olympus-Coder from Ollama Library
+ollama pull aadi19/olympus-coder
+
+# Start using immediately
+ollama run aadi19/olympus-coder "Create a Python function to validate emails"
+```
+
+**That's it!** Your AI coding assistant is ready to use worldwide.
+
+## ⚡ Advanced Setup (For IDE Integration Tools)
 
 ### 1. Test the Helper Script
 

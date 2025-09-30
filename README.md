@@ -19,33 +19,35 @@ Olympus-Coder is a custom LLM built on CodeLlama 13B, specifically designed to s
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Easy Installation (Recommended)
 
-- [Ollama](https://ollama.ai/) installed and running
-- Python 3.8+ for validation scripts
-- 8GB+ RAM recommended
+```bash
+# Install Olympus-Coder from Ollama Library
+ollama pull aadi19/olympus-coder
 
-### Installation
+# Start using immediately
+ollama run aadi19/olympus-coder "Create a Python function to validate emails"
+```
 
-1. **Clone the repository**
+### Advanced Installation (Build from Source)
+
+For developers who want to customize or contribute:
+
+1. **Prerequisites**
+   - [Ollama](https://ollama.ai/) installed and running
+   - Python 3.8+ for validation scripts
+   - 8GB+ RAM recommended
+
+2. **Clone and build**
    ```bash
-   git clone https://github.com/yourusername/olympus-coder.git
+   git clone https://github.com/chandan1819/olympus-coder.git
    cd olympus-coder
-   ```
-
-2. **Build the model**
-   ```bash
    ./scripts/build_model.sh
    ```
 
 3. **Validate installation**
    ```bash
    python3 scripts/validate.py --quick
-   ```
-
-4. **Start using the model**
-   ```bash
-   ollama run olympus-coder-v1:latest
    ```
 
 ## 💡 Usage Examples
