@@ -1,0 +1,24 @@
+name: olympus-coder
+version: 1.0.0
+description: AI-powered coding assistant for autonomous software development
+author: Olympus-Coder Contributors
+license: MIT
+base_model: codellama:13b
+repository: https://github.com/chandan1819/olympus-coder
+tags:
+- coding
+- ai-assistant
+- development
+- python
+- javascript
+- autonomous
+use_cases:
+- Code generation from natural language
+- Real-time debugging assistance
+- Project context understanding
+- Automated testing and documentation
+performance:
+  accuracy: '>95%'
+  syntax_correctness: '>98%'
+  response_time: <5s
+  task_completion: '>75%'
